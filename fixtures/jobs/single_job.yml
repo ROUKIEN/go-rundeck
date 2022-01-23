@@ -1,0 +1,19 @@
+---
+
+name: job name
+description: |
+  Performs a service
+
+  This is <b>html</b>
+  <ul><li>bulleted list</li></ul>
+
+  <a href="/">Top</a>
+
+  1. this is a markdown numbered list
+  2. second item
+
+  [a link](http://example.com)
+loglevel: INFO
+sequence:
+  commands:
+    - exec: a command

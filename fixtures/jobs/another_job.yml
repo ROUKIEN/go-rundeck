@@ -1,0 +1,27 @@
+---
+
+name: Another job
+description: |
+  Performs another job
+
+  This is <b>html</b>
+  <ul><li>bulleted list</li></ul>
+
+  <a href="/">Top</a>
+
+  1. this is a markdown numbered list
+  2. second item
+
+  [a link](http://example.com)
+loglevel: INFO
+sequence:
+  keepgoing: true
+  strategy: node-first
+  commands:
+  - exec: ...
+  - script: ...
+    args: ...
+  - scriptfile: ...
+    args:
+  - scripturl: ...
+    args:
