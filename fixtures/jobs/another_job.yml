@@ -1,5 +1,6 @@
 ---
 
+id: 47f24c4b-34bb-4416-a9f3-db913cd11044
 name: Another job
 description: |
   Performs another job
@@ -18,10 +19,13 @@ sequence:
   keepgoing: true
   strategy: node-first
   commands:
-  - exec: ...
-  - script: ...
-    args: ...
-  - scriptfile: ...
-    args:
-  - scripturl: ...
-    args:
+  - exec: ls
+  - script: |-
+      #!/bin/bash
+
+      echo "hello world"
+    args: -h
+  - scriptfile: /usr/bin/foo.sh
+    args: -h
+  - scripturl: https://getcomposer.org/installer
+    args: --quiet
