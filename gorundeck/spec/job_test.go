@@ -1,4 +1,4 @@
-package gorundeck
+package spec
 
 import (
 	"testing"

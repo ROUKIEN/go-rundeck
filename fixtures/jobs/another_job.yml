@@ -19,13 +19,16 @@ sequence:
   keepgoing: true
   strategy: node-first
   commands:
-  - exec: ls
+  - exec: echo "coucou" && /bin/true
+  - exec: sleep 1 && echo hello once && sleep 1 && echo hello twice
   - script: |-
       #!/bin/bash
 
-      echo "hello world"
-    args: -h
+      echo "$1"
+      curl ifconfig.me
+    args: Hello
   - scriptfile: /usr/bin/foo.sh
     args: -h
   - scripturl: https://getcomposer.org/installer
     args: --quiet
+  - exec: echo "last step"

@@ -1,8 +1,8 @@
-package gorundeck
+package spec
 
 import (
 	"fmt"
-	"strings"
+	"io"
 
 	"gopkg.in/yaml.v3"
 )
@@ -22,7 +22,9 @@ type Sequence struct {
 }
 
 type Command interface {
+	ScriptInterpreter() string
 	ToString() string
+	Execute() (io.Reader, error)
 }
 
 type Commands []Command
@@ -72,39 +74,4 @@ func (c *Commands) UnmarshalYAML(value *yaml.Node) error {
 	}
 
 	return nil
-}
-
-type ExecCommand struct {
-	Exec string `yaml:"exec"`
-}
-
-func (s *ExecCommand) ToString() string {
-	return s.Exec
-}
-
-type ScriptCommand struct {
-	Script string `yaml:"script"`
-	Args   string `yaml:"args"`
-}
-
-func (s *ScriptCommand) ToString() string {
-	return strings.Replace(s.Script, "\n", "\\n", -1)
-}
-
-type ScriptFileCommand struct {
-	ScriptFile string `yaml:"scriptfile"`
-	Args       string `yaml:"args"`
-}
-
-func (s *ScriptFileCommand) ToString() string {
-	return s.ScriptFile
-}
-
-type ScriptUrlCommand struct {
-	ScriptUrl string `yaml:"scripturl"`
-	Args      string `yaml:"args"`
-}
-
-func (s *ScriptUrlCommand) ToString() string {
-	return s.ScriptUrl
 }
